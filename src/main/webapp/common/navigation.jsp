@@ -15,10 +15,10 @@
         成績管理
         <ul class="nav flex-column ms-3">
             <li class="nav-item">
-                <a class="nav-link" href="ScoreList.action">成績登録</a>
+                <a class="nav-link" href="TestRegist.action">成績登録</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="ScoreReference.action">成績参照</a>
+                <a class="nav-link" href="TestList.action">成績参照</a>
             </li>
         </ul>
     </li>

@@ -43,7 +43,7 @@ public class FrontController extends HttpServlet {
             e.printStackTrace(out);
  
             // エラーページへ遷移
-            request.getRequestDispatcher("/error.jsp")
+            request.getRequestDispatcher("error.jsp")
                    .forward(request, response);
         }
     }

@@ -106,4 +106,17 @@ public class SubjectDao extends Dao {
             }
         }
     }
+    /**
+     * 科目の削除
+     */
+    public boolean delete(String cd, String schoolCd) throws Exception {
+        try (Connection con = getConnection();
+             PreparedStatement st = con.prepareStatement(
+                 "DELETE FROM SUBJECT WHERE CD = ? AND SCHOOL_CD = ?")) {
+            st.setString(1, cd);
+            st.setString(2, schoolCd);
+            int count = st.executeUpdate();
+            return count > 0;
+        }
+    }
 }
