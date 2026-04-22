@@ -24,7 +24,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="subject-name-input">科目名</label> <input class="form-control" type="text" id="subject-name-input" name="name" 
-                           placeholder="科目名を記入してください" value="${name}" required /> </div>
+                           placeholder="科目名を入力してください" value="${name}" required /> </div>
 
                 <div class="mt-4">
                     <button class="btn btn-primary" type="submit" id="register-button">登録</button> </div>

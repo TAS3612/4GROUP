@@ -16,7 +16,7 @@
                     <div class="col-auto">
                         <a href="TestRegist.action">戻る</a> </div>
                     <div class="col-auto ms-5">
-                        <a href="SubjectList.action">成績参照</a> </div>
+                        <a href="TestList.action">成績参照</a> </div>
                 </div>
         </section>
     </c:param>

@@ -50,7 +50,6 @@ public class TestListStudentExecuteAction extends Action {
             entYearList.add(i);
         }
 
-        // JSPの変数名に合わせてセット
         request.setAttribute("entYearList", entYearList);
         request.setAttribute("classList", classList);
         request.setAttribute("subjectList", subjectList);
@@ -62,29 +61,37 @@ public class TestListStudentExecuteAction extends Action {
             return;
         }
 
-        // ===== 4. 学生情報と成績の取得 =====
-        // ① 学生の氏名を取得する (STUDENTテーブルから取得)
+        // ===== 4. 学生情報の取得 =====
         StudentDao sDao = new StudentDao();
         Student target = sDao.get(studentNo); 
 
-        // ② 成績リストを取得する (TESTテーブルから取得)
-        TestListStudentDao dao = new TestListStudentDao();
-        List<TestListStudent> list = dao.filter(target != null ? target : new Student());
+        // ===== 5. 判定と遷移のロジック =====
+        if (target == null) {
+            // A. 学生そのものが存在しない場合
+            request.setAttribute("error", "学生情報が存在しませんでした");
+            // 入力画面(test_list.jsp)へ戻る
+            request.getRequestDispatcher("test_list.jsp").forward(request, response);
+            return;
+        }
 
-        // ===== 5. 検索状態の保持 =====
+        // --- 学生が存在する場合の処理 ---
+        // JSPに表示するためにセット（成績の有無に関わらず表示される）
+        request.setAttribute("target_student", target);
         request.setAttribute("f4", studentNo);
 
-        // ===== 6. 判定と遷移 =====
+        // 成績リストを取得
+        TestListStudentDao dao = new TestListStudentDao();
+        List<TestListStudent> list = dao.filter(target);
+
         if (list == null || list.isEmpty()) {
-            request.setAttribute("error", "学生情報が存在しませんでした");
-            // 失敗時は元の入力画面(test_list.jsp)へ
-            request.getRequestDispatcher("test_list.jsp").forward(request, response);
+            // B. 学生はいるが、成績データがない場合
+            request.setAttribute("error", "成績情報が存在しませんでした");
         } else {
+            // C. 成績データがある場合
             request.setAttribute("tests_student", list);
-            // 氏名を表示するためにセット
-            request.setAttribute("target_student", target);
-            // 結果画面へ
-            request.getRequestDispatcher("test_list_student.jsp").forward(request, response);
         }
+
+        // 学生さえ見つかっていれば、結果表示用のJSP(test_list_student.jsp)へ
+        request.getRequestDispatcher("test_list_student.jsp").forward(request, response);
     }
 }

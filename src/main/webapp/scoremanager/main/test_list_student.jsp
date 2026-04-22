@@ -34,6 +34,7 @@
 							</select>
                         </div>
                         <div class="col-3">
+                        <label class="form-label">科目</label>
 							<select class="form-select" name="subject">
 							    <option value="">--------</option>
 							    <c:forEach var="s" items="${subjectList}">

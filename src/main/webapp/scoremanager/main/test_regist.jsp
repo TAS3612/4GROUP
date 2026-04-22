@@ -15,15 +15,17 @@
                 <div class="bg-light p-3 border d-flex align-items-end gap-3 mb-4">
                     
                     <%-- 入学年度 (背景を白に指定) --%>
-                    <div style="width: 120px;">
-                        <label class="form-label small mb-1">入学年度</label>
-                        <select name="entYear">
-        			<option value="">--------</option>
-       				<c:forEach var="y" items="${entYearSet}">
-       				<option value="${y}" ${y == entYear ? "selected" : ""}>${y}</option>
-        			</c:forEach>
-    				</select>
-                    </div>
+				<div style="width: 120px;">
+				    <label class="form-label small mb-1">入学年度</label>
+				    <select name="entYear" class="form-select form-select-sm bg-white">
+				        <option value="">--------</option>
+				        <c:forEach var="y" items="${entYearSet}">
+				            <option value="${y}" <c:if test="${y == entYear}">selected</c:if>>
+				                ${y}
+				            </option>
+				        </c:forEach>
+				    </select>
+				</div>
 
                     <%-- クラス (背景を白に指定) --%>
                     <div style="width: 120px;">
@@ -74,17 +76,21 @@
                     <input type="hidden" name="subjectCd" value="${subjectCd}">
                     <input type="hidden" name="testNo" value="${testNo}">
                     <input type="hidden" name="classNum" value="${classNum}">
+                    
                     <table class="table table-hover mt-3">
                         <thead>
                             <tr class="border-bottom border-dark">
+                             	<th>入学年度</th>
+                             	<th>クラス</th>
                                 <th>学籍番号</th>
                                 <th>氏名</th>
                                 <th>点数</th>
-                            </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="test" items="${testList}">
                                 <tr>
+									<td>${test.student.entYear}</td>
+									<td>${test.student.classNum}</td>
                                     <td>${test.student.no}</td>
                                     <td>${test.student.name}</td>
                                     <td>
@@ -97,9 +103,9 @@
                             </c:forEach>
                         </tbody>
                     </table>
-                    <div class="mt-3">
-                        <input type="submit" value="登録して終了" class="btn btn-primary btn-sm px-4">
-                    </div>
+                        <div class="mt-3">
+                            <button  type ="submit" class="btn btn-secondary">登録して終了</button>
+					</div>
                 </form>
             </c:if>
 

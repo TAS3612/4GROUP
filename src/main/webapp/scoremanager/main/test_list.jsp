@@ -75,54 +75,7 @@
                 <div class="text-danger mb-3">${error}</div>
             </c:if>
  
-            <%-- 検索結果表示エリア --%>
-            <c:choose>
-                <%-- ActionのsetAttribute("list")に合わせる --%>
-                <c:when test="${not empty list}">
-                    <div class="mt-4">
-                        <%-- 科目名は必要に応じてActionで別途セットするか、listの最初の要素から取得 --%>
-                        <h5 class="fw-bold mb-3">科目別検索結果</h5>
-                        <table class="table table-hover border-top">
-                            <thead>
-                                <tr class="table-light">
-                                    <th>入学年度</th>
-                                    <th>クラス</th>
-                                    <th>学生番号</th>
-                                    <th>氏名</th>
-                                    <th class="text-center">1回</th>
-                                    <th class="text-center">2回</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach var="test" items="${list}">
-                                    <tr>
-                                        <td>${test.entYear}</td>
-                                        <td>${test.classNum}</td>
-                                        <td>${test.studentNo}</td>
-                                        <td>${test.studentName}</td>
-                                        <td class="text-center">
-                                            <c:out value="${test.points[1]}" default="-" />
-                                        </td>
-                                        <td class="text-center">
-                                            <c:out value="${test.points[2]}" default="-" />
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                </c:when>
-                <c:when test="${not empty tests_student}">
-                    <%-- 学生別成績表示が必要な場合はここに実装 --%>
-                </c:when>
-                <c:otherwise>
-                    <c:if test="${empty error}">
-                        <div class="text-info">
-                            科目情報を選択または学生情報を入力して検索ボタンをクリックしてください
-                        </div>
-                    </c:if>
-                </c:otherwise>
-            </c:choose>
+            
         </section>
     </c:param>
 </c:import>
