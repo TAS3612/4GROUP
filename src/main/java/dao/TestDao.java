@@ -14,7 +14,7 @@ import bean.Test;
 public class TestDao extends Dao {
 
     // クラス図にある基本のSQL文
-    private String baseSql = "select * from test where school_cd = ?";
+    
 
     /**
      * getメソッド：特定の成績情報を1件取得する
