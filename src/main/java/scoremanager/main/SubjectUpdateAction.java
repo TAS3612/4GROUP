@@ -1,4 +1,5 @@
 package scoremanager.main;
+
 import bean.Subject;
 import bean.Teacher;
 import dao.SubjectDao;
@@ -21,17 +22,29 @@ public class SubjectUpdateAction extends Action {
         // ログインユーザー取得
         Teacher teacher = (Teacher) session.getAttribute("user");
 
-        // パラメータから学生番号取得
+        // パラメータから科目コード取得
         String cd = request.getParameter("cd");
 
-        // 学生情報取得
+        // 科目情報取得
         SubjectDao sDao = new SubjectDao();
         Subject subject = sDao.get(cd, teacher.getSchool().getCd());
 
-        // クラス一覧取得（ログインユーザーの学校に紐づく）
         
-        // JSPへ渡す
-        request.setAttribute("subject", subject);
+        if (subject == null) {
+            // DBに存在しない場合、エラーメッセージをセット
+            request.setAttribute("errors", "科目が存在していません");
+            
+            // subject_update.jsp内でnull参照エラーが起きないよう、
+            // 空のインスタンス、またはコードだけセットしたインスタンスを渡す
+            Subject emptySubject = new Subject();
+            emptySubject.setCd(cd); // 表示用にコードだけ入れておく
+            request.setAttribute("subject", emptySubject);
+        } else {
+            // 正常に取得できた場合
+            request.setAttribute("subject", subject);
+        }
+        // --------------------------
+
         // 変更画面へ遷移
         request.getRequestDispatcher("subject_update.jsp")
                .forward(request, response);

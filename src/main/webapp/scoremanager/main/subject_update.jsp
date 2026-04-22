@@ -19,31 +19,46 @@
 
             <form action="SubjectUpdateExecute.action" method="post">
 
-    <!-- 科目コード -->
-    <div class="mb-3">
-        <label class="fw-bold">科目コード</label><br>
-        <span class="ms-3">${subject.cd}</span>
-        <input type="hidden" name="cd" value="${subject.cd}">
-    </div>
+                <!-- 科目コード -->
+                <div class="mb-3">
+                    <label class="fw-bold">科目コード</label><br>
+                    <span class="ms-3">${subject.cd}</span>
+                    <input type="hidden" name="cd" value="${subject.cd}">
 
-    <!-- 科目名 -->
-    <div class="mb-3">
-        <label class="fw-bold">科目名</label>
-        <input type="text"
-               name="name"
-               value="${subject.name}"
-               maxlength="30"
-               class="form-control"
-               required>
-    </div>
+                    <%-- エラーメッセージの表示 --%>
+                    <c:if test="${not empty errors}">
+                        <div class="ms-3 mt-1 text-warning fw-bold">
+                            ${errors}
+                        </div>
+                    </c:if>
+                </div>
 
-    <!-- ボタン -->
-<div><input type="submit" value="変更" class="btn btn-primary btn-sm">
-    </div>
+                <!-- 科目名 -->
+                <div class="mb-3">
+                    <label class="fw-bold">科目名</label>
+                    <input type="text"
+                           name="name"
+                           value="${subject.name}"
+                           maxlength="30"
+                    
+                           class="form-control bg-white"
+                           <c:if test="${not empty errors}">disabled</c:if>
+                           required>
+                </div>
 
-    <a href="SubjectList.action">戻る</a>
+                <!-- ボタン -->
+                <div class="d-flex gap-3">
+                    <input type="submit"
+                           value="変更"
+                           class="btn btn-primary px-4"
+                           <c:if test="${not empty errors}">disabled</c:if>>
+                </div>
 
-</form>
+                <div class="mt-3">
+                    <a href="SubjectList.action">戻る</a>
+                </div>
+
+            </form>
 
         </section>
 

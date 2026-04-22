@@ -1,7 +1,12 @@
 package scoremanager.main;
 
+import java.time.Year;
+import java.util.ArrayList;
+import java.util.List;
+
 import bean.Student;
 import bean.Teacher;
+import dao.ClassNumDao;
 import dao.StudentDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -32,8 +37,29 @@ public class StudentCreateExecuteAction extends Action {
                 || classNum == null || classNum.isEmpty()) {
 
             request.setAttribute("error", "未入力項目があります。");
+
+            // 入力値保持
+            request.setAttribute("ent_year", entYearStr);
+            request.setAttribute("no", no);
+            request.setAttribute("name", name);
+            request.setAttribute("class_num", classNum);
+
+            // クラス一覧
+            ClassNumDao cDao = new ClassNumDao();
+            List<String> classList = cDao.filter(teacher.getSchool());
+            request.setAttribute("classList", classList);
+
+            // 入学年度リスト
+            int currentYear = Year.now().getValue();
+            List<Integer> entYearList = new ArrayList<>();
+            for (int i = currentYear - 10; i <= currentYear + 10; i++) {
+                entYearList.add(i);
+            }
+            request.setAttribute("entYearList", entYearList);
+
+            // ✅ 修正（フルパス）
             RequestDispatcher rd =
-                    request.getRequestDispatcher("student_create.jsp");
+                    request.getRequestDispatcher("/scoremanager/main/student_create.jsp");
             rd.forward(request, response);
             return;
         }
@@ -47,8 +73,29 @@ public class StudentCreateExecuteAction extends Action {
 
         if (oldStudent != null) {
             request.setAttribute("error", "その学生番号は既に登録されています。");
+
+            // 入力値保持
+            request.setAttribute("ent_year", entYearStr);
+            request.setAttribute("no", no);
+            request.setAttribute("name", name);
+            request.setAttribute("class_num", classNum);
+
+            // クラス一覧
+            ClassNumDao cDao = new ClassNumDao();
+            List<String> classList = cDao.filter(teacher.getSchool());
+            request.setAttribute("classList", classList);
+
+            // 入学年度リスト
+            int currentYear = Year.now().getValue();
+            List<Integer> entYearList = new ArrayList<>();
+            for (int i = currentYear - 10; i <= currentYear + 10; i++) {
+                entYearList.add(i);
+            }
+            request.setAttribute("entYearList", entYearList);
+
+            // ✅ 修正（フルパス）
             RequestDispatcher rd =
-                    request.getRequestDispatcher("student_create.jsp");
+                    request.getRequestDispatcher("/scoremanager/main/student_create.jsp");
             rd.forward(request, response);
             return;
         }
@@ -65,9 +112,9 @@ public class StudentCreateExecuteAction extends Action {
         // 登録
         dao.save(student);
 
-        // 完了画面へ
+        // 完了画面
         RequestDispatcher rd =
-                request.getRequestDispatcher("student_create_done.jsp");
+                request.getRequestDispatcher("/scoremanager/main/student_create_done.jsp");
         rd.forward(request, response);
     }
 }
