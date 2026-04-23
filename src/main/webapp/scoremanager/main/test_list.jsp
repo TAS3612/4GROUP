@@ -16,34 +16,32 @@
                         <div class="col-2 fw-bold">科目情報</div>
                         <div class="col-auto">
                             <label class="form-label">入学年度</label>
-                            <%-- ActionのgetParameter("entYear")に合わせる --%>
+                            
                             <select class="form-select form-select-sm" name="entYear" style="width:120px;">
                                 <option value="">--------</option>
                                 <c:forEach var="year" items="${entYearList}">
-                                    <%-- ActionのsetAttribute("selectedEntYear")に合わせる --%>
+                                    
                                     <option value="${year}" <c:if test="${year == selectedEntYear}">selected</c:if>>${year}</option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="col-auto">
                             <label class="form-label">クラス</label>
-                            <%-- ActionのgetParameter("classNum")に合わせる --%>
+                            
                             <select class="form-select form-select-sm" name="classNum" style="width:120px;">
                                 <option value="">--------</option>
                                 <c:forEach var="num" items="${classList}">
-                                    <%-- ActionのsetAttribute("selectedClassNum")に合わせる --%>
+                                    
                                     <option value="${num}" <c:if test="${num == selectedClassNum}">selected</c:if>>${num}</option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="col-3">
                             <label class="form-label">科目</label>
-                            <%-- ActionのgetParameter("subject")に合わせる --%>
+                            
                             <select class="form-select" name="subject">
                                 <option value="">--------</option>
-                                <c:forEach var="subject" items="${subjectList}">
-                                    <%-- ActionのsetAttribute("selectedSubject")に合わせる --%>
-                                    <option value="${subject.cd}" <c:if test="${subject.cd == selectedSubject}">selected</c:if>>${subject.name}</option>
+                                <c:forEach var="subject" items="${subjectList}"                                    <option value="${subject.cd}" <c:if test="${subject.cd == selectedSubject}">selected</c:if>>${subject.name}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -70,7 +68,6 @@
                 </form>
             </div>
  
-            <%-- エラー表示（ActionのsetAttribute("error")に合わせる） --%>
             <c:if test="${not empty error}">
                 <div class="text-danger mb-3">${error}</div>
             </c:if>

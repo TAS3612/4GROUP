@@ -6,15 +6,15 @@
 
     <c:param name="content">
         <section class="me-4">
-            <%-- ① タイトル：グレーの背景バー --%>
+            
             <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">成績管理</h2>
 
             <%-- 検索用フォーム --%>
             <form action="TestRegist.action" method="get">
-                <%-- 全体の背景を薄いグレー(bg-light)にし、内側の要素を調整 --%>
+                
                 <div class="bg-light p-3 border d-flex align-items-end gap-3 mb-4">
                     
-                    <%-- 入学年度 (背景を白に指定) --%>
+                  
 				<div style="width: 120px;">
 				    <label class="form-label small mb-1">入学年度</label>
 				    <select name="entYear" class="form-select form-select-sm bg-white">
@@ -27,7 +27,7 @@
 				    </select>
 				</div>
 
-                    <%-- クラス (背景を白に指定) --%>
+                    
                     <div style="width: 120px;">
                         <label class="form-label small mb-1">クラス</label>
                         <select name="classNum" class="form-select form-select-sm bg-white">
@@ -38,7 +38,7 @@
                         </select>
                     </div>
 
-                    <%-- 科目 (背景を白に指定) --%>
+                    
                     <div style="width: 250px;">
                         <label class="form-label small mb-1">科目</label>
                         <select name="subjectCd" class="form-select form-select-sm bg-white">
@@ -49,7 +49,7 @@
                         </select>
                     </div>
 
-                    <%-- 回数 (背景を白に指定) --%>
+                    
                     <div style="width: 120px;">
                         <label class="form-label small mb-1">回数</label>
                         <select name="testNo" class="form-select form-select-sm bg-white">
