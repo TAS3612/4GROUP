@@ -4,7 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import tool.Action; // tool.Action をインポート
 
-// ★修正：HttpServlet ではなく Action を継承する
+// ：HttpServlet ではなく Action を継承する
 public class SubjectCreateAction extends Action {
 
     @Override

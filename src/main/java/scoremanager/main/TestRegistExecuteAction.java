@@ -30,7 +30,7 @@ public class TestRegistExecuteAction extends Action {
         // ===== パラメータ取得 =====
         String subjectCd = request.getParameter("subjectCd");
         String testNoStr = request.getParameter("testNo");
-        String classNum = request.getParameter("classNum"); // ★追加
+        String classNum = request.getParameter("classNum"); 
 
         if (subjectCd == null || testNoStr == null || classNum == null) {
             response.sendRedirect("TestRegist.action");

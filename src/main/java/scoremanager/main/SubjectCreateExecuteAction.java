@@ -35,7 +35,7 @@ public class SubjectCreateExecuteAction extends Action {
             request.getRequestDispatcher("subject_create.jsp").forward(request, response);
         } else {
             Subject subject = new Subject();
-            subject.setSchool(schoolCd); // setSchoolに変更
+            subject.setSchool(schoolCd); 
             subject.setCd(cd);
             subject.setName(name);
             

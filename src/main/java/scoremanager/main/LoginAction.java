@@ -16,7 +16,7 @@ public class LoginAction extends Action {
 
     	    // セッションが存在する場合のみ、破棄（ログアウト処理）
     	    if (session != null) {
-    	        session.invalidate(); // これでセッション内のデータ（teacher等）が全て消えます
+    	        session.invalidate(); // セッション内のデータ消える
     	    }
 
     	    // ログイン画面（login.jsp）を表示
