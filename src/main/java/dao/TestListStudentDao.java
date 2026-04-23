@@ -11,7 +11,6 @@ import bean.TestListStudent;
 
 public class TestListStudentDao extends Dao {
 
-    // 修正ポイント：school_cd の結合を外し、学生番号のみで確実に取得できるようにします
     private String baseSql = 
         "SELECT sj.name AS subject_name, sj.cd AS subject_cd, t.no, t.point " +
         "FROM test t " +

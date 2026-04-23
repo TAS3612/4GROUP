@@ -32,7 +32,7 @@ public class TestListSubjectDao extends Dao {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement(baseSql);
 
-        st.setString(1, subjectCd.trim());  // ←一旦これを消す
+        st.setString(1, subjectCd.trim());  
         st.setInt(2, entYear);
         st.setString(3, classNum);
         st.setString(4, school.getCd());
@@ -46,8 +46,6 @@ public class TestListSubjectDao extends Dao {
 
         return list;
     }
-
-    // ResultSet → Bean変換
     private List<TestListSubject> postFilter(ResultSet rs) throws Exception {
 
         List<TestListSubject> list = new ArrayList<>();

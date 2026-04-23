@@ -25,9 +25,9 @@ public class SubjectDao extends Dao {
 
         while (rs.next()) {
             Subject subject = new Subject();
-            subject.setSchool(rs.getString("SCHOOL_CD")); // schoolフィールドへ
-            subject.setCd(rs.getString("CD"));           // cdフィールドへ
-            subject.setName(rs.getString("NAME"));       // nameフィールドへ
+            subject.setSchool(rs.getString("SCHOOL_CD"));
+            subject.setCd(rs.getString("CD"));           
+            subject.setName(rs.getString("NAME"));       
             list.add(subject);
         }
 

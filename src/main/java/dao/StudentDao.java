@@ -57,8 +57,7 @@ public class StudentDao extends Dao {
     private List<Student> postFilter(ResultSet rSet, School school) throws Exception {
         List<Student> list = new ArrayList<>();
         try {
-            // リザルトセットを全件走査
-            // 引数の名前に合わせて「rSet」に統一
+            // リザルトセットを全件
             while (rSet.next()) {
                 // 学生インスタンスを初期化
                 Student student = new Student();

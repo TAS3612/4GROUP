@@ -13,12 +13,6 @@ import bean.Test;
 
 public class TestDao extends Dao {
 
-    // クラス図にある基本のSQL文
-    
-
-    /**
-     * getメソッド：特定の成績情報を1件取得する
-     */
     public Test get(Student student, Subject subject, School school, int no) throws Exception {
         Test test = null;
         try (Connection con = getConnection();
@@ -38,30 +32,20 @@ public class TestDao extends Dao {
         }
         return test;
     }
-
-    /**
-     * postFilterメソッド：ResultSetをList<Test>に変換する
-     */
     private List<Test> postFilter(ResultSet rSet, School school) throws Exception {
         List<Test> list = new ArrayList<>();
-        // 注意：本来はここでStudentDaoやSubjectDaoを使って完全なオブジェクトを作る必要がありますが
-        // ここでは簡易的にIDのみをセットする例にします
+       
         while (rSet.next()) {
             Test test = new Test();
-            // 学生や科目のセット（詳細はプロジェクトの設計に合わせて調整してください）
+            // 学生や科目のセット
             test.setNo(rSet.getInt("no"));
             test.setPoint(rSet.getInt("point"));
             test.setSchool(school);
-            // 実際には rs.getString("student_no") などを使って各Beanをセットします
             list.add(test);
         }
         return list;
     }
-
-    /**
-     * filterメソッド：条件を指定して成績一覧を取得する
-     */
-//    これ入れないと一覧にデータが表示されない
+//    これ入れないと一覧にデータを表示
     public List<Test> filter(int entYear, String classNum, Subject subject, int num, School school) throws Exception {
 
         List<Test> list = new ArrayList<>();
@@ -156,10 +140,7 @@ public class TestDao extends Dao {
         return result;
     }
 
-    /**
-     * saveメソッド（1件）：1件の成績を保存（INSERT or UPDATE）する
-     * クラス図の赤色（private）に合わせてprivateで実装
-     */
+
     private boolean save(Test test, Connection con) throws Exception {
 
         int count = 0;
