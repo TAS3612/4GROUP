@@ -80,7 +80,7 @@ public class TestListSubjectExecuteAction extends Action {
 
             request.setAttribute("error", "学生情報が存在しませんでした");
 
-            request.getRequestDispatcher("test_list.jsp")
+            request.getRequestDispatcher("test_list_subject.jsp")
                    .forward(request, response);
             return;
         }

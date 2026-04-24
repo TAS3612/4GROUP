@@ -68,7 +68,7 @@ public class TestListStudentExecuteAction extends Action {
         // ===== 5. 判定と遷移のロジック =====
         if (target == null) {
             // A. 学生そのものが存在しない場合
-            request.setAttribute("error", "学生情報が存在しませんでした");
+            request.setAttribute("error1", "学生情報が存在しませんでした");
             // 入力画面(test_list.jsp)へ戻る
             request.getRequestDispatcher("test_list.jsp").forward(request, response);
             return;

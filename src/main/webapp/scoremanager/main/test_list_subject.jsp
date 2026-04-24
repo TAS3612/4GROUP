@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
@@ -64,50 +65,56 @@
                 </form>
             </div>
 
-            <%-- エラー表示 --%>
-            <c:if test="${not empty error}">
-                <div class="text-danger mb-3">${error}</div>
-            </c:if>
+           <%-- エラー表示と表示制御 --%>
+            <c:choose>
+                <%-- エラーがある場合 --%>
+                <c:when test="${not empty error}">
+                    <div class="text-danger mb-3">${error}</div>
+                </c:when>
 
-            <%-- ① 科目名表示 --%>
-            <div class="mb-2 fw-bold">
-                科目：
-                <c:forEach var="s" items="${subjectList}">
-                    <c:if test="${s.cd == selectedSubject}">
-                        ${s.name}
-                    </c:if>
-                </c:forEach>
-            </div>
+                <%-- エラーがない場合のみ、以下の結果表示を実行 --%>
+                <c:otherwise>
+                    <%-- ① 科目名表示 --%>
+                    <div class="mb-2 fw-bold">
+                        科目：
+                        <c:forEach var="s" items="${subjectList}">
+                            <c:if test="${s.cd == selectedSubject}">
+                                ${s.name}
+                            </c:if>
+                        </c:forEach>
+                    </div>
 
-            <%-- ② 成績一覧テーブル --%>
-            <table class="table table-hover border-top">
-                <thead>
-                    <tr class="table-light">
-                        <th> 入学年度</th>
-                        <th> クラス</th>
-                        <th> 学生番号</th>
-                        <th> 氏名</th>
-                        <th class="text-center"> 1回</th>
-                        <th class="text-center"> 2回</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="st" items="${list}">
-                        <tr>
-                            <td> ${st.entYear}</td>
-                            <td> ${st.classNum}</td>
-                            <td> ${st.studentNo}</td>
-                            <td> ${st.studentName}</td>
-                            <td class="text-center">
-                                 <c:out value="${st.getPoint(1)}" default="-" />
-                            </td>
-                            <td class="text-center">
-                                 <c:out value="${st.getPoint(2)}" default="-" />
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                    <%-- ② 成績一覧テーブル --%>
+                    <table class="table table-hover border-top">
+                        <thead>
+                            <tr class="table-light">
+                                <th> 入学年度</th>
+                                <th> クラス</th>
+                                <th> 学生番号</th>
+                                <th> 氏名</th>
+                                <th class="text-center"> 1回</th>
+                                <th class="text-center"> 2回</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="st" items="${list}">
+                                <tr>
+                                    <td> ${st.entYear}</td>
+                                    <td> ${st.classNum}</td>
+                                    <td> ${st.studentNo}</td>
+                                    <td> ${st.studentName}</td>
+                                    <td class="text-center">
+                                         <c:out value="${st.getPoint(1)}" default="-" />
+                                    </td>
+                                    <td class="text-center">
+                                         <c:out value="${st.getPoint(2)}" default="-" />
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </c:otherwise>
+            </c:choose>
         </section>
     </c:param>
 </c:import>
