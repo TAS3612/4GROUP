@@ -69,7 +69,7 @@
             <%-- 成績一覧表示エリア --%>
             <c:if test="${not empty testList}">
                 <div class="mb-2 text-dark fw-bold">
-                    科目：${subjectName}
+                    科目：${subjectName}　(${testNo}回)
                 </div>
                 <form action="TestRegistExecute.action" method="post">
                     <%-- 検索条件を hidden で引き継ぐ --%>

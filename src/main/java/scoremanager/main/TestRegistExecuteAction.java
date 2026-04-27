@@ -113,7 +113,7 @@ public class TestRegistExecuteAction extends Action {
             request.setAttribute("subjectCd", subjectCd);
             request.setAttribute("testNo", testNo);
             request.setAttribute("classNum", classNum);
-
+       
             request.getRequestDispatcher("test_regist.jsp").forward(request, response);
             return;
         }
