@@ -1,3 +1,4 @@
+// 編集者：河端
 package bean;
  
 import java.io.Serializable;
