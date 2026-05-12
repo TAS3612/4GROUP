@@ -16,7 +16,9 @@
 
             <div class="mb-3">
                 <label class="form-label">入学年度</label>
-                <select name="ent_year" class="form-select" required>
+                <select name="ent_year" class="form-select" required
+                oninvalid="this.setCustomValidity('入学年度を選択してください。')"
+            oninput="this.setCustomValidity('')">
 
     				<!-- 初期値 -->
     				<option value="">--------</option>
