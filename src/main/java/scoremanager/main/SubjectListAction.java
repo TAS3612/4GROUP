@@ -1,3 +1,4 @@
+// 編集者：竹内
 package scoremanager.main;
 
 import java.util.List;

@@ -1,3 +1,4 @@
+// 編集者：河端
 package scoremanager.main;
 
 import bean.Student;

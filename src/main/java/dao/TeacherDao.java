@@ -1,3 +1,4 @@
+// 編集者：坂井
 package dao;
  
 import java.sql.Connection;

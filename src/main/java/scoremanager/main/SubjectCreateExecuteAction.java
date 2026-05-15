@@ -1,3 +1,4 @@
+// 編集者：木村
 package scoremanager.main;
 
 import bean.Subject;

@@ -1,3 +1,4 @@
+// 編集者：坂井
 package scoremanager.main;
 
 import java.util.ArrayList;

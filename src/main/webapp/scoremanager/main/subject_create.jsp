@@ -1,3 +1,4 @@
+<%-- 編集者：木村 --%>
 <%-- 科目登録JSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
