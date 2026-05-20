@@ -34,7 +34,7 @@ public class ClassNumDao extends Dao {
 			if (rSet.next()) {
             // リザルトセットが存在する場合
             // クラス番号インスタンスに検索結果をセット
-				classNum.setClassNum(rSet.getString("class_num"));
+				classNum.setClassNum(rSet.getString("CLASS_NUM"));
 				classNum.setSchool(sDao.get(rSet.getString("school_cd")));
 				} else {
             // リザルトセットが存在しない場合

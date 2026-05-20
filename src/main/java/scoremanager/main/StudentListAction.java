@@ -25,6 +25,10 @@ public class StudentListAction extends Action {
         HttpSession session = request.getSession();
         // セッションからログインユーザー取得
         Teacher teacher = (Teacher) session.getAttribute("user");
+        if (teacher == null) {
+            response.sendRedirect("Login.action");
+            return;
+        }
 //      ここは仮のログイン
 //        if (teacher == null) {
 //            teacher = new Teacher();

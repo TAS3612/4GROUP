@@ -25,7 +25,10 @@ public class LoginExecuteAction extends Action {
             // セッションIDの発行
             teacher.setAuthenticated(true);
             session.setAttribute("user", teacher);
-            response.sendRedirect("Menu.action");
+            session.setAttribute("teacher", teacher);
+            
+            // Tomcatのコンテキストパスを含めた正しいURLにエンコードしてリダイレクトする
+            response.sendRedirect(response.encodeRedirectURL("Menu.action"));
         } else {
           
             request.setAttribute("id", id);

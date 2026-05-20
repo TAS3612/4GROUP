@@ -75,6 +75,23 @@
                 </div>
             </div>
         </div>
+        <div style="background: #fff9e6; border: 2px solid #ffcc00; padding: 15px; margin: 20px 0; font-family: monospace;">
+    <h3>【デバッグ】セッションの中身一覧</h3>
+    <ul>
+    <%
+        java.util.Enumeration<String> e = session.getAttributeNames();
+        if (!e.hasMoreElements()) {
+            out.print("<li>セッションは空っぽです（何も保存されていません）</li>");
+        }
+        while(e.hasMoreElements()) {
+            String name = e.nextElement();
+            Object value = session.getAttribute(name);
+            out.print("<li><strong>" + name + "</strong> : " + value + "</li>");
+        }
+    %>
+    </ul>
+</div>
+        
         
         <script>
         function togglePassword() {
@@ -89,4 +106,5 @@
         
     </c:param>
 </c:import>
+<%-- セッションの中身を全自動ですべて表示するデバッグコード --%>
 
